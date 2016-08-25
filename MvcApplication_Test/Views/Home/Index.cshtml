@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/angular.js"></script>
+    <script src="~/Test.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="test">
+        @*<input type="button" ng-click="Form1 ? (formname.$valid && Save()) : (Form2 ? formname1.$valid && Save() : false)" value="Save" />        
+        <a href="#" ng-click="Form2 = false; Form1 = true">Form1</a>
+        <a href="#" ng-click="Form1 = false; Form2 = true">Form2</a>
+        <div ng-show="Form1">
+            <form name="formname" novalidate>
+                <label>Form 1</label>                
+                <input type="text" name="age" ng-model="agemodel" ng-required="true" /><p style="color: red">*</p>
+                <span ng-show="formname.age.$dirty && formname.age.$invalid">
+                    <span ng-show="formname.age.$error.required">Required</span>
+                </span>
+                <input type="email" name="namemodel" ng-model="namemodel" ng-required="true" />
+                <span ng-show="formname.namemodel.$dirty && formname.namemodel.$invalid">
+                    <span ng-show="formname.namemodel.$error.required">Required
+                    </span>
+                    <span ng-show="formname.namemodel.$error.email">Email invalid</span>
+                </span>
+            </form>
+
+            <form name="form" class="css-form" novalidate>
+                E-mail:
+                <input type="email" ng-model="user.email" name="uEmail" required="" />
+                <br />
+                <div ng-show="form.$submitted || form.uEmail.$touched">
+                    <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+                    <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+                </div>
+                <br />
+                <input type="submit" ng-click="update(user)" value="Save" />
+            </form>
+
+        </div>
+        <div ng-show="Form2">
+            <ng-form action="#" name="formname1">
+                <label>Form 2</label>                
+                <input type="text" name="textmodel" ng-model="textmodel" ng-required="true"/>
+                <span ng-show="formname1.textmodel.$dirty && formname1.textmodel.$invalid">
+                    <span ng-show="formname1.textmodel.$error.required">Required</span>
+                </span>
+                <input type="email" name="namemodel" ng-model="namemodel" ng-required="true" />
+                <span ng-show="formname1.namemodel.$dirty && formname1.namemodel.$invalid">
+                    <span ng-show="formname1.namemodel.$error.required">Required
+                    </span>
+                    <span ng-show="formname1.namemodel.$error.email">Email invalid</span>
+                </span>
+            </ng-form>
+        </div>*@
+        @*<input type="button" ng-click="Save()" value="Save" />
+        <ng-form name="formname">
+            <input type="text" ng-required="true" ng-model="name" name="name" />
+            <span ng-show="hasherror('name','required')">Required</span>            
+        </ng-form>*@
+        <a ng-click="Form1 = true; Form2 = false; setTab('myform')">Form1</a>
+        <a ng-click="Form1 = false; Form2 = true; setTab('myform1')">Form2</a>
+        <div ng-show="Form1">
+            <form id="myform" name="myform" submit-on="myform" ng-submit="onSubmitted()">
+                Form...
+                <input type="email" name="mymodel" ng-model="mymodel" ng-required="true" />
+                <span ng-show="(myform.$submitted || myform.$touched) && myform.mymodel.$error.required">Required</span>
+                <span ng-show="(myform.$submitted || myform.$touched) && myform.mymodel.$error.email">Invalid email address</span>
+            </form>
+            <hr />            
+        </div>
+        <div ng-show="Form2">
+            <form id="myform1" name="myform1" submit-on="myform1" ng-submit="onSubmitted1()">
+                Form...
+                <input type="email" name="mymodel1" ng-model="mymodel1" ng-required="true" />
+                <span ng-show="(myform1.$submitted || myform1.$touched || (myform1.mymodel1.$dirty && myform1.mymodel1.$invalid)) && myform1.mymodel1.$error.required">Required</span>
+                <span ng-show="(myform1.$submitted || myform1.$touched || myform1.mymodel1.$invalid) && myform1.mymodel1.$error.email">Invalid email address</span>
+            </form>
+            <hr />
+        </div>
+        <pre>{{form}}</pre>
+        @*<a class="btn" ng-click="Form1 ? triggerSubmit('myform') : triggerSubmit('myform1') ">Submit</a>*@
+        <a class="btn" ng-click="triggerSubmit(form, 'myform')">Submit</a>
+</body>
+</html>
